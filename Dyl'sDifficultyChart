@@ -1,0 +1,39 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+local win = DiscordLib:Window("Developer: MakerScript")
+local serv = win:Server("Deal Difficulty Table", "D")
+local main = serv:Channel("Main")
+local player = game.Players.LocalPlayer.Name
+local Humanoid = game["Workspace"][game.Players.LocalPlayer.Name]["HumanoidRootPart"]
+local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+
+
+
+main:Button("Bypass Anti-Exploit [Press after every death]", function()
+game["Workspace"][player]["Anti"]:Destroy()
+end)
+
+main:Button("Bypass Kill Brick [Press after every death]", function()
+game["Workspace"][player]["Kill Brick"]:Destroy()
+end)
+
+main:Button("Pass all checkpoints [Click + 1 Checkpoint]", function()
+WeebGang = game.Players.LocalPlayer.leaderstats.Stages.Value + 1
+if game.Workspace.Checkpoint:FindFirstChild(tostring(WeebGang)) then
+    Humanoid.CFrame = game.Workspace.Checkpoint:FindFirstChild(tostring(WeebGang)).CFrame
+end
+end)
+
+main:Button("Auto - Farm [Coin]", function()
+while true do
+    wait(0)
+WeebGang = game.Players.LocalPlayer.leaderstats.Stages.Value + 1
+if game.Workspace.Checkpoint:FindFirstChild(tostring(WeebGang)) then
+    Humanoid.CFrame = game.Workspace.Checkpoint:FindFirstChild(tostring(WeebGang)).CFrame
+end
+end
+end)
+
+main:Button("Off Auto Farm [Rejoin]", function()
+    ts:Teleport(game.PlaceId, p)
+end)
