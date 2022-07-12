@@ -1,0 +1,89 @@
+local KickMenu = Instance.new("ScreenGui")
+local KickFrame = Instance.new("Frame")
+local User = Instance.new("TextBox")
+local UICorner = Instance.new("UICorner")
+local Message = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+local Close = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+
+
+KickMenu.Name = "KickMenu"
+KickMenu.Parent = game.CoreGui
+KickMenu.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+KickFrame.Name = "KickFrame"
+KickFrame.Parent = KickMenu
+KickFrame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+KickFrame.BorderColor3 = Color3.fromRGB(45, 45, 45)
+KickFrame.Position = UDim2.new(0.311007947, 0, 0.294422835, 0)
+KickFrame.Size = UDim2.new(0, 569, 0, 317)
+KickFrame.Active = true
+KickFrame.Draggable = true
+
+User.Name = "User"
+User.Parent = KickFrame
+User.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+User.BorderColor3 = Color3.fromRGB(255, 255, 255)
+User.Position = UDim2.new(0.101933219, 0, 0.0788643584, 0)
+User.Size = UDim2.new(0, 454, 0, 75)
+User.Font = Enum.Font.Highway
+User.Text = "Name"
+User.TextColor3 = Color3.fromRGB(255, 255, 255)
+User.TextScaled = true
+User.TextSize = 14.000
+User.TextWrapped = true
+
+UICorner.Parent = KickFrame
+
+Message.Name = "Message"
+Message.Parent = KickFrame
+Message.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Message.BorderColor3 = Color3.fromRGB(255, 255, 255)
+Message.Position = UDim2.new(0.101933219, 0, 0.406940073, 0)
+Message.Size = UDim2.new(0, 454, 0, 75)
+Message.Font = Enum.Font.Highway
+Message.Text = "Reason"
+Message.TextColor3 = Color3.fromRGB(255, 255, 255)
+Message.TextScaled = true
+Message.TextSize = 14.000
+Message.TextWrapped = true
+
+TextButton.Parent = KickFrame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.Position = UDim2.new(0.189806685, 0, 0.738170326, 0)
+TextButton.Size = UDim2.new(0, 353, 0, 64)
+TextButton.Font = Enum.Font.Highway
+TextButton.Text = "Kick"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+local v3 = game["CoreGui"]["KickMenu"]
+local v6 = game:GetService("ReplicatedStorage")
+local v7 = v3.KickFrame
+local v8 = v7.User
+v7 = v3.KickFrame.Message
+TextButton.MouseButton1Down:Connect(function()
+    local v13 = v7.Text
+    v6.KickPlayer:FireServer(v8.Text, v7.Text)
+end)
+
+
+Close.Name = "Close"
+Close.Parent = KickFrame
+Close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Close.BorderColor3 = Color3.fromRGB(45, 45, 45)
+Close.Position = UDim2.new(0.929701209, 0, 0, 0)
+Close.Size = UDim2.new(0, 40, 0, 26)
+Close.Font = Enum.Font.Highway
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+Close.TextScaled = true
+Close.TextSize = 14.000
+Close.TextWrapped = true
+Close.MouseButton1Down:Connect(function()
+	game["CoreGui"]["KickMenu"]:Destroy()
+end)
+
+UICorner_2.Parent = Close
